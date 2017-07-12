@@ -26,6 +26,7 @@ bot.setWebHook(`${url}/bot${TOKEN}`);
 
 bot.onText(/^\d{10}$/, function (message) {
     console.log('sending post request');
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
     request.post(
         'https://zaprosto.kz/api-testing-1234/?aurumit=true',
         { form: { 'number': message.text } },
